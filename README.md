@@ -6,4 +6,4 @@
 
 ## Links
 
-[https://factorcode.org](factorcode.org)
+[factorcode.org](https://factorcode.org)
