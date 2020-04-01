@@ -1,10 +1,11 @@
-FROM ubuntu:18.04
+FROM alpine:3.11.5
 
-RUN apt update && apt-get --yes install libc6-dev libpango1.0-dev libx11-dev xorg-dev libgtk2.0-dev gtk2-engines-pixbuf libgtkglext1-dev wget git git-doc rlwrap gcc g++ make &&\
+RUN apk update && apk add --yes install libc6-dev libpango1.0-dev libx11-dev xorg-dev wget git git-doc rlwrap gcc g++ make &&\
     wget https://downloads.factorcode.org/releases/0.98/factor-linux-x86-64-0.98.tar.gz &&\
     tar -xf factor-linux-x86-64-0.98.tar.gz -C / &&\
     rm factor-linux-x86-64-0.98.tar.gz
 
 WORKDIR /factor
 
-CMD ["./factor"]
+ENTRYPOINT [ "./factor" ]
+CMD ["-i=boot.linux-x86.64.image -exclude=ui"]
